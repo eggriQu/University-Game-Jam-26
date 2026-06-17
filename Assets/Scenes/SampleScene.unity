@@ -1662,11 +1662,7 @@ MonoBehaviour:
   rb: {fileID: 653670368}
   moveSpeed: 5
   shroomGauge: {fileID: 275426346}
-<<<<<<< Updated upstream
   tripLevel: 108
-=======
-  tripLevel: 0
->>>>>>> Stashed changes
 --- !u!50 &653670368
 Rigidbody2D:
   serializedVersion: 5
