@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,11 @@ public class MushroomGauge : MonoBehaviour
         {
             Debug.Log("Trip Level: " + player.tripLevel);
         }
+    }
 
+    public void AddToTripLevel()
+    {
+        player.tripLevel = player.tripLevel + 60;
+        pivotTransform.Rotate(-Vector3.forward, 60);
     }
 }

@@ -9,9 +9,9 @@ public class PlayerController : MonoBehaviour
     private InputAction move;
     private Vector2 moveInput;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private MushroomGauge shroomGauge;
 
     public float tripLevel;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         move.Enable();
         move.performed += Move;
         move.canceled += StopMoving;
+
     }
 
     private void OnDisable()
