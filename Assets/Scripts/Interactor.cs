@@ -13,10 +13,29 @@ public interface IInteractable
 public class Interactor : MonoBehaviour
 {
     private IInteractable currentInteractable;
+    private InputAction interact;
 
     void Update()
     {
+        /*
         if (Keyboard.current.eKey.IsActuated() && currentInteractable != null)
+        {
+            currentInteractable.Interact();
+        }
+        */
+    }
+
+    private void OnEnable()
+    {
+        interact = InputSystem.actions.FindAction("Interact");
+
+        interact.Enable();
+        interact.started += Interact;
+    }
+
+    void Interact(InputAction.CallbackContext context)
+    {
+        if (currentInteractable != null)
         {
             currentInteractable.Interact();
         }

@@ -3,12 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using System.Collections;
 
 public class MushroomGauge : MonoBehaviour
 {
     [SerializeField] private RectTransform pivotTransform;
     [SerializeField] private PlayerController player;
     [SerializeField] private TilemapManager tileManager;
+    [SerializeField] private Animator cameraAnim;
 
     public UnityEvent soberEvent;
     public UnityEvent museumEvent;
@@ -60,5 +62,13 @@ public class MushroomGauge : MonoBehaviour
         {
             badTripEvent.Invoke();
         }
+        StartCoroutine(PlayCameraEffect());
+    }
+
+    IEnumerator PlayCameraEffect()
+    {
+        cameraAnim.Play("Trip Transition");
+        yield return new WaitForSeconds(1.333333336f);
+        cameraAnim.Play("Default");
     }
 }
