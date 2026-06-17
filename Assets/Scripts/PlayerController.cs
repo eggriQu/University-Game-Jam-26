@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        tripLevel = 180;
+        
     }
 
     private void OnEnable()
