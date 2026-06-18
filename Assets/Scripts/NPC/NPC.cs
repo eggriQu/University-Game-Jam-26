@@ -19,7 +19,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        DTyping = GameObject.Find("Text").GetComponent<DialogueTyping>();
+        DTyping = GameObject.Find("Dialogue Text").GetComponent<DialogueTyping>();
         string text = File.ReadAllText("Assets/Dialogue/Dialogue.txt");
         SplitDialogue = text.Split('-');
         dialogueIndex = chosenInfo.indexList[0];
@@ -45,6 +45,7 @@ public class NPC : MonoBehaviour, IInteractable
             npcImage.enabled = true;
             text.enabled = true;
             CurrentDialogue = chosenInfo.indexList[dialogueIndex];
+            CorrelateTextAlignment(CurrentDialogue, text);
             dialogueIndex++;
             PlayCurrentDialogue(SplitDialogue[CurrentDialogue]);
         }
@@ -76,5 +77,18 @@ public class NPC : MonoBehaviour, IInteractable
             chosenInfo = soberInfo;
         }
         dialogueIndex = 0;
+    }
+
+    void CorrelateTextAlignment(int index, Text text)
+    {
+        if (index == 2 || index == 5 || index == 7 || index == 10 || index == 12 ||
+            index == 81 || index == 85 || index == 86 || index == 88)
+        {
+            text.alignment = TextAnchor.UpperRight;
+        }
+        else
+        {
+            text.alignment = TextAnchor.UpperLeft;
+        }
     }
 }

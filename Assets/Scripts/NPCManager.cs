@@ -1,15 +1,19 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class NPCManager : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
+    public string[] dialogueList;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         ChangeIndexLists();
+        string text = File.ReadAllText("Assets/Dialogue/Dialogue.txt");
+        dialogueList = text.Split('-');
     }
 
     // Update is called once per frame
