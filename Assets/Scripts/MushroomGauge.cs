@@ -42,6 +42,7 @@ public class MushroomGauge : MonoBehaviour
     {
         player.tripLevel = player.tripLevel + 36;
         pivotTransform.Rotate(-Vector3.forward, 36);
+        /*
         if (player.tripLevel < 72)
         {
             soberEvent.Invoke();
@@ -62,13 +63,35 @@ public class MushroomGauge : MonoBehaviour
         {
             badTripEvent.Invoke();
         }
+        */
         StartCoroutine(PlayCameraEffect());
     }
 
     IEnumerator PlayCameraEffect()
     {
         cameraAnim.Play("Trip Transition");
-        yield return new WaitForSeconds(1.333333336f);
+        yield return new WaitForSeconds(0.6666666667f);
+        if (player.tripLevel < 72)
+        {
+            soberEvent.Invoke();
+        }
+        else if (player.tripLevel > 72 && player.tripLevel < 144)
+        {
+            museumEvent.Invoke();
+        }
+        else if (player.tripLevel > 144 && player.tripLevel < 216)
+        {
+            megadoseEvent.Invoke();
+        }
+        else if (player.tripLevel > 216 && player.tripLevel < 288)
+        {
+            heroicEvent.Invoke();
+        }
+        else if (player.tripLevel > 288 && player.tripLevel < 360)
+        {
+            badTripEvent.Invoke();
+        }
+        yield return new WaitForSeconds(0.6666666667f);
         cameraAnim.Play("Default");
     }
 }
